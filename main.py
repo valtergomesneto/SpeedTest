@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import speedtest
+import tkinter.messagebox
 
 #cores
 
@@ -32,6 +33,8 @@ frame_corpo.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 def testarConexao():
 
     st = speedtest.Speedtest()
+
+    tkinter.messagebox.showinfo('Testando... ', "O teste foi iniciado, aguarde um momento por favor!")
 
     velocidadeDownload = st.download()/1024/1024
     velocidadeUpload = st.upload()/1024/1024
