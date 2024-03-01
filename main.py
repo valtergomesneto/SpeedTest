@@ -51,8 +51,10 @@ def testarConexao():
         l_Upload['text'] = upload_formatado
         l_logo_testando['text'] = ''
 
-        l_logo_testandoOk = Label(frame_logo, text='Teste finalizado!', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
-        l_logo_testandoOk.place(x=225, y=35)
+        tkinter.messagebox.showinfo('Done', "Teste finalizado!")
+
+        #l_logo_testandoOk = Label(frame_logo, text='Teste finalizado!', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
+        #l_logo_testandoOk.place(x=225, y=35)
 
     except speedtest.ConfigRetrievalError as e:
 
