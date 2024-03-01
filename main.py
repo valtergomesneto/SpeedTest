@@ -34,6 +34,9 @@ def testarConexao():
 
     st = speedtest.Speedtest()
 
+    l_logo_testando = Label(frame_logo, text='Testando...', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
+    l_logo_testando.place(x=265, y=30)
+
     tkinter.messagebox.showinfo('Testando... ', "O teste foi iniciado, aguarde um momento por favor!")
 
     velocidadeDownload = st.download()/1024/1024
@@ -44,6 +47,10 @@ def testarConexao():
 
     l_Download['text'] = download_formatado
     l_Upload['text'] = upload_formatado
+    l_logo_testando['text'] = ''
+
+    l_logo_testandoOk = Label(frame_logo, text='Teste finalizado!', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
+    l_logo_testandoOk.place(x=225, y=35)
 
 
 #configurando o frame_logo
@@ -79,7 +86,6 @@ l_logo_imagem = Label(frame_corpo, image=imagem_downUp, compound=LEFT, anchor=NE
 l_logo_imagem.place(x=142, y=20)
 
 
-
 l_Download = Label(frame_corpo, text='', anchor=NE, font=('arial 28'), bg=cor1, fg=cor4)
 l_Download.place(x=220, y=25)
 l_Download_mb = Label(frame_corpo, text='Mbps download', anchor=NW, font=('Ivy 10'), bg=cor1, fg=cor4)
@@ -89,5 +95,6 @@ l_Download_mb.place(x=230, y=70)
 #criando botão
 btn_testar = Button(frame_corpo, text='Iniciar teste', command=testarConexao, padx=10, font=('ivy 10 bold'), relief=RAISED, overrelief=RIDGE,bg=cor5, fg=cor1)
 btn_testar.place(x=120, y=100)
+
 
 janela.mainloop()
