@@ -32,26 +32,32 @@ frame_corpo.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 
 def testarConexao():
 
-    st = speedtest.Speedtest()
+    try:
 
-    l_logo_testando = Label(frame_logo, text='Testando...', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
-    l_logo_testando.place(x=265, y=30)
+        st = speedtest.Speedtest()
 
-    tkinter.messagebox.showinfo('Testando... ', "O teste foi iniciado, aguarde um momento por favor!")
+        l_logo_testando = Label(frame_logo, text='Testando...', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
+        l_logo_testando.place(x=265, y=30)
 
-    velocidadeDownload = st.download()/1024/1024
-    velocidadeUpload = st.upload()/1024/1024
+        tkinter.messagebox.showinfo('Testando... ', "O teste foi iniciado, aguarde um momento por favor!")
 
-    download_formatado = "{:.2f}".format(velocidadeDownload)
-    upload_formatado = "{:.2f}".format(velocidadeUpload)
+        velocidadeDownload = st.download()/1024/1024
+        velocidadeUpload = st.upload()/1024/1024
 
-    l_Download['text'] = download_formatado
-    l_Upload['text'] = upload_formatado
-    l_logo_testando['text'] = ''
+        download_formatado = "{:.2f}".format(velocidadeDownload)
+        upload_formatado = "{:.2f}".format(velocidadeUpload)
 
-    l_logo_testandoOk = Label(frame_logo, text='Teste finalizado!', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
-    l_logo_testandoOk.place(x=225, y=35)
+        l_Download['text'] = download_formatado
+        l_Upload['text'] = upload_formatado
+        l_logo_testando['text'] = ''
 
+        l_logo_testandoOk = Label(frame_logo, text='Teste finalizado!', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
+        l_logo_testandoOk.place(x=225, y=35)
+
+    except speedtest.ConfigRetrievalError as e:
+
+        errorMessage = str(e)
+        tkinter.messagebox.showinfo('ERROR', "Erro ao chamar serviço - " + errorMessage)
 
 #configurando o frame_logo
 
@@ -84,7 +90,6 @@ imagem_downUp = imagem_downUp.resize((65,65))
 imagem_downUp = ImageTk.PhotoImage(imagem_downUp)
 l_logo_imagem = Label(frame_corpo, image=imagem_downUp, compound=LEFT, anchor=NE, font=('ivy 20'))
 l_logo_imagem.place(x=142, y=20)
-
 
 l_Download = Label(frame_corpo, text='', anchor=NE, font=('arial 28'), bg=cor1, fg=cor4)
 l_Download.place(x=220, y=25)
