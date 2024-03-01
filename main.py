@@ -34,6 +34,9 @@ def testarConexao():
 
     try:
 
+        l_Download['text'] = ''
+        l_Upload['text'] = ''
+
         st = speedtest.Speedtest()
 
         l_logo_testando = Label(frame_logo, text='Testando...', padx=10, anchor=NE, font=('ivy 10 bold'), bg=cor1, fg=cor4)
